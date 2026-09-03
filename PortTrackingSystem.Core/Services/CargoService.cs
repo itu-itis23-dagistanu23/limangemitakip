@@ -75,13 +75,13 @@ namespace PortTrackingSystem.Core.Services
             if (string.IsNullOrWhiteSpace(cargo.CargoType))
                 throw new Exception("Yük tipi zorunludur!");
 
-            // İŞ KURALI: Yük ağırlığı 0 veya daha küçük olamaz
+            // Yük ağırlığı 0 veya daha küçük olamaz
             if (cargo.WeightTon <= 0)
             {
                 throw new Exception("Hata: Yük ağırlığı (WeightTon) 0'dan büyük olmalıdır!");
             }
 
-            // İŞ KURALI: Yük mutlaka var olan bir gemiye ait olmalı
+            //Yük mutlaka var olan bir gemiye ait olmalı
             var ship = await _shipRepository.GetByIdAsync(cargo.ShipId);
             if (ship == null)
             {
